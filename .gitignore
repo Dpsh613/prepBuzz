@@ -1,0 +1,29 @@
+# =========================================
+# GENERAL
+# =========================================
+
+# Dependency directories
+# Ignore all node_modules folders anywhere in the project
+node_modules/
+
+# Environment variables
+# Ignore all .env files
+.env
+
+# =========================================
+# DEVELOPMENT
+# =========================================
+
+# Log files
+*.log
+npm-debug.log*
+
+# =========================================
+# PRODUCTION / BUILD
+# =========================================
+
+# Ignore the production build folder from React (client)
+/client/build
+
+# Ignore a common build folder name for the server
+/dist
