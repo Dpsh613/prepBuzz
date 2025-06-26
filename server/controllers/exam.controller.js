@@ -19,6 +19,10 @@ export const getExamByShortName = async (req, res) => {
     }
     res.status(200).json(exam);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching exam details", error });
+    // Log the detailed error for your own debugging
+    console.error("Error in getExamByShortName:", error);
+
+    // Send a generic, safe error message to the client
+    res.status(500).json({ message: "An internal server error occurred." });
   }
 };
