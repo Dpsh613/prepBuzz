@@ -1,26 +1,172 @@
-/* client/src/pages/ExamDetailPage/ExamDetailPage.module.css */
-
-.detailPage {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-
+/* --- Base Page and Status Styles --- */
 .statusMessage {
   text-align: center;
-  color: #555;
+  color: #4b5563;
+  padding: 4rem 1rem;
+}
+
+.detailPage {
+  padding-bottom: 3rem;
 }
 
 .backLink {
   display: inline-block;
   margin-bottom: 1.5rem;
-  color: #007bff;
+  font-weight: 500;
+  color: #4f46e5;
   text-decoration: none;
+  transition: transform 0.2s;
+}
+.backLink:hover {
+  transform: translateX(-4px);
 }
 
-.content {
-  margin-top: 1rem;
+/* --- Gradient Header --- */
+.header {
+  background: linear-gradient(
+    to right,
+    #2563eb,
+    #3b82f6
+  ); /* from-blue-600 to-blue-500 */
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+.headerTitle {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.headerDescription {
+  font-size: 1.125rem; /* text-lg */
+  color: #dbeafe; /* text-blue-100 */
+  max-width: 80ch;
+}
+.headerButton {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: #1d4ed8; /* text-blue-700 */
+  font-weight: 600;
+  border-radius: 0.375rem;
+  transition: background-color 200ms;
+  text-decoration: none;
+}
+.headerButton:hover {
+  background-color: #eff6ff; /* bg-blue-100 */
+}
+.headerButtonIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+}
+
+/* --- Main Content Grid --- */
+.contentGrid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* --- Section Card --- */
+.sectionCard {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  overflow: hidden; /* Important for containing children */
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+.sectionCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+.sectionCardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+.sectionIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #4f46e5;
+}
+.sectionCardContent {
+  padding: 1.5rem;
   line-height: 1.6;
+}
+.sectionCardContent p {
+  margin: 0 0 0.5rem;
+  color: #374151;
+}
+
+/* --- Link Item Grid and Card --- */
+.linksGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 1024px) {
+  .linksGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.linkCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  text-decoration: none;
+  transition: border-color 200ms, box-shadow 200ms, transform 200ms;
+}
+.linkCard:hover {
+  border-color: #a5b4fc;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
+}
+.linkCardIcon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+}
+.linkCardText {
+  flex-grow: 1;
+}
+.linkCardTitle {
+  font-weight: 600;
+  color: #111827;
+}
+.linkCardDescription {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+.linkCardExternalIcon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #9ca3af;
+  transition: color 200ms;
+}
+.linkCard:hover .linkCardExternalIcon {
+  color: #4f46e5;
+}
+
+/* --- Icon Color Helpers --- */
+.youtubeColor {
+  color: #ef4444; /* red-500 */
+}
+.amazonColor {
+  color: #f59e0b; /* amber-500 */
 }

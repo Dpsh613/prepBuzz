@@ -1,0 +1,88 @@
+/* Using a color variable for consistency with the rest of the app */
+:root {
+  --primary-color: #4f46e5;
+}
+
+/* Main footer wrapper */
+.footer {
+  background-color: #1f2937; /* bg-gray-800 */
+  color: #d1d5db; /* text-gray-300 */
+  padding-top: 3rem; /* py-12 */
+  padding-bottom: 3rem;
+}
+
+/* The 3-column grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 column on mobile */
+  gap: 2rem; /* gap-8 */
+}
+
+/* Footer section titles (e.g., "GovExam Navigator") */
+.title {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  color: #ffffff; /* text-white */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+/* The main description text */
+.description {
+  color: #9ca3af; /* text-gray-400 */
+}
+
+/* Sub-titles (e.g., "Quick Links", "Legal") */
+.linksTitle {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* The list of links */
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* space-y-2 */
+}
+
+/* Individual links */
+.link {
+  color: #d1d5db; /* Default text color */
+  text-decoration: none;
+  transition: color 200ms ease-in-out;
+}
+
+.link:hover {
+  color: var(--primary-color);
+}
+
+/* Container for the social media links */
+.socials {
+  margin-top: 1.5rem; /* mt-6, a bit more space */
+}
+
+.socialIcons {
+  display: flex;
+  gap: 1rem; /* space-x-4 */
+}
+
+/* The bottom copyright section */
+.copyright {
+  margin-top: 3rem; /* mt-12 */
+  padding-top: 2rem; /* pt-8 */
+  border-top: 1px solid #374151; /* border-t border-gray-700 */
+  text-align: center;
+  color: #9ca3af; /* text-gray-400 */
+}
+
+/* --- Responsive Styles --- */
+/* For medium screens (md: in Tailwind) and up */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* Switch to 3 columns */
+  }
+}
