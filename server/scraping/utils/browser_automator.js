@@ -1,35 +1,41 @@
-import puppeteer from "puppeteer-core";
+// scraping/utils/browser_automator.js
+
+// CHANGE 1: Import puppeteer-extra and the stealth plugin
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
+
 import dotenv from "dotenv";
 
 dotenv.config();
-/**
- * Fetches a dynamic page, waits for a selector, and returns the final HTML content.
- * @param {string} url - The URL to navigate to.
- * @param {string} [waitSelector] - An optional CSS selector to wait for before getting content.
- * @returns {Promise<string>} The full page HTML after JavaScript has executed.
- */
+
+// CHANGE 2: Apply the stealth plugin
+puppeteer.use(StealthPlugin());
 
 export async function getDynamicPageContent(url, waitSelector) {
-  // Add a check to ensure the path is available
   if (!process.env.CHROME_EXECUTABLE_PATH) {
     throw new Error("CHROME_EXECUTABLE_PATH is not set in the .env file.");
   }
 
   let browser = null;
-  console.log(`   -> Launching browser for: ${url}`);
+  console.log(`   -> Launching stealth browser for: ${url}`);
   try {
     browser = await puppeteer.launch({
-      executablePath: process.env.CHROME_EXECUTABLE_PATH, // Read from .env
+      executablePath: process.env.CHROME_EXECUTABLE_PATH,
       headless: "new",
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    }); // Use the new headless mode
+    });
 
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: "networkidle2", timeout: 60000 }); // Wait until network is quiet, 60s timeout
+
+    // CHANGE 3 (Optional but recommended): Set a realistic viewport
+    await page.setViewport({ width: 1280, height: 800 });
+
+    // Use 'load' or 'domcontentloaded' as they are less likely to time out than 'networkidle2'
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
 
     if (waitSelector) {
       console.log(`   -> Waiting for selector: "${waitSelector}"`);
-      await page.waitForSelector(waitSelector, { timeout: 30000 }); // 30s timeout
+      await page.waitForSelector(waitSelector, { timeout: 30000 });
     }
 
     const content = await page.content();
@@ -40,7 +46,6 @@ export async function getDynamicPageContent(url, waitSelector) {
       `❌ Error getting dynamic page content for ${url}:`,
       error.message
     );
-    // Return empty string on failure so the scraper can handle it gracefully
     return "";
   } finally {
     if (browser) {

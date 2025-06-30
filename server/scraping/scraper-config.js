@@ -69,13 +69,13 @@ export const EXAMS_TO_SCRAPE = [
     conductingBody: "NTA",
     description:
       "A standardized test for admission to multiple undergraduate, postgraduate, and diploma programs in Central Universities of India.",
-    officialWebsite: "https://cuet.samarth.ac.in/",
+    officialWebsite: "https://exams.nta.ac.in/CUET-UG/",
     scraperConfig: {
       strategy: "DYNAMIC",
-      url: "https://cuet.samarth.ac.in/",
-      waitForSelector: ".public-notice-card",
+      url: "https://exams.nta.ac.in/CUET-UG/",
+      waitForSelector: ".news-block",
       selectors: {
-        noticeList: ".public-notice-card li",
+        noticeList: ".news-block li",
         noticeTitle: "a",
         noticeLink: "a",
       },
@@ -356,9 +356,9 @@ export const EXAMS_TO_SCRAPE = [
     officialWebsite: "https://www.rrbcdg.gov.in/", // Note: Website varies by RRB region
     scraperConfig: {
       strategy: "STATIC",
-      url: "https://www.rrbcdg.gov.in/active_notice_board.php", // More stable URL
+      url: "https://www.rrbcdg.gov.in/", // More stable URL
       selectors: {
-        noticeList: "tbody tr",
+        noticeList: "#tentive_calander tr",
         noticeTitle: "td:nth-of-type(2)",
         noticeLink: "td:nth-of-type(3) a",
       },
@@ -375,9 +375,9 @@ export const EXAMS_TO_SCRAPE = [
     scraperConfig: {
       // Same config as RRB NTPC
       strategy: "STATIC",
-      url: "https://www.rrbcdg.gov.in/active_notice_board.php",
+      url: "https://www.rrbcdg.gov.in/",
       selectors: {
-        noticeList: "tbody tr",
+        noticeList: "#tentive_calander tr",
         noticeTitle: "td:nth-of-type(2)",
         noticeLink: "td:nth-of-type(3) a",
       },
@@ -573,7 +573,7 @@ export const EXAMS_TO_SCRAPE = [
     officialWebsite: "https://www.icai.org/",
     scraperConfig: {
       strategy: "STATIC",
-      url: "https://www.icai.org/post/announcements", // Specific announcements page
+      url: "https://www.icai.org/post/category/announcements", // Specific announcements page
       selectors: {
         noticeList: ".t-body p",
         noticeTitle: "a",
