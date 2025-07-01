@@ -2,95 +2,10 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f8f9fa; /* A neutral light gray for the background */
-  color: #212529; /* A standard dark text color for readability */
 }
 
 .main-content {
   flex-grow: 1;
 }
 
-/* ==========================================================================
-   2. Centered Content Container
-   ========================================================================== */
-.container {
-  width: 100%;
-  max-width: 1280px; /* A standard max-width for large screens */
-  margin-left: auto;
-  margin-right: auto;
-  padding: 3.2rem 1.6rem; /* Default padding (py-8, px-4) */
-}
-
-/* Responsive padding for larger screens */
-@media (min-width: 640px) {
-  .container {
-    padding-left: 2.4rem;
-    padding-right: 2.4rem;
-  }
-}
-@media (min-width: 1024px) {
-  .container {
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
-  }
-}
-
-/* ==========================================================================
-   3. Sidebar and Content Layout
-   ========================================================================== */
-.sidebar-layout {
-  display: flex;
-  flex-direction: column; /* Stacks vertically on mobile by default */
-}
-
-/* Switches to a horizontal layout on medium screens and up */
-@media (min-width: 768px) {
-  .sidebar-layout {
-    flex-direction: row;
-    gap: 3.2rem; /* `gap` is a modern way to create space-x-* */
-  }
-}
-
-/* The primary content pane that grows to fill the space. */
-.content-pane {
-  flex: 1;
-}
-
-/* Adds margin-top on mobile when sidebar is stacked above the content. */
-.content-pane-with-sidebar {
-  margin-top: 3.2rem;
-}
-
-/* Removes the margin when the layout becomes horizontal. */
-@media (min-width: 768px) {
-  .content-pane-with-sidebar {
-    margin-top: 0;
-  }
-}
-
-/* ==========================================================================
-   4. Utility Components (like an error message)
-   ========================================================================== */
-
-.error-message {
-  position: relative;
-  padding: 1.2rem 1.6rem;
-  border: 1px solid #fca5a5; /* red-400 equivalent */
-  border-radius: 0.8rem; /* rounded-lg equivalent */
-  background-color: #fee2e2; /* red-100 equivalent */
-  color: #b91c1c; /* red-700 equivalent */
-}
-
-.error-message-title {
-  font-weight: 700;
-}
-
-.error-message-body {
-  display: block;
-}
-
-@media (min-width: 640px) {
-  .error-message-body {
-    display: inline;
-  }
-}
+/* You could keep other very specific app-level layouts here if needed */

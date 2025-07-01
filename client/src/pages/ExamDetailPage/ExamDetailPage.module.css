@@ -170,3 +170,13 @@
 .amazonColor {
   color: #f59e0b; /* amber-500 */
 }
+
+/* Add this new class for better spacing in info cards */
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.infoGrid p {
+  line-height: 1.7; /* Better line height for text blocks */
+}

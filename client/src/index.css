@@ -1,96 +1,108 @@
-/* ==========================================================================
-   1. ROOT & FONT SIZING SETUP
-   ========================================================================== */
+/* =================================================================
+   Global Design System & CSS Reset
+   ================================================================= */
 
-/*
- * Set the base font size to 62.5% to make 1rem = 10px.
- * The default browser font-size is 16px. 16px * 62.5% = 10px.
- * Using a percentage respects the user's custom browser font size settings,
- * which is crucial for accessibility.
-*/
-html {
-  font-size: 62.5%; /* 1rem = 10px */
-  box-sizing: border-box; /* A better box model */
+/* --- 1. CSS Variables (Single Source of Truth) --- */
+:root {
+  /* Colors */
+  --color-primary: #4f46e5;
+  --color-primary-dark: #4338ca;
+  --color-accent: #f59e0b;
+  --color-accent-dark: #d97706;
+
+  --color-text-dark: #111827;
+  --color-text-body: #374151;
+  --color-text-muted: #6b7280;
+  --color-text-light: #dbeafe; /* For dark backgrounds */
+  --color-text-white: #ffffff;
+
+  --color-bg-white: #ffffff;
+  --color-bg-light: #f8f9fa;
+  --color-bg-subtle: #f3f4f6;
+  --color-border: #e5e7eb;
+
+  /* Typography */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  
+  /* Spacing & Radii */
+  --border-radius: 0.75rem;
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+/* --- 2. Root Font Size Fix --- */
 /*
- * Apply the border-box model to all elements and pseudo-elements.
- * This makes layout math much more intuitive.
+  This sets the base font size to 62.5% of the browser's default (usually 16px).
+  This makes 1rem = 10px, which is convenient for developers.
+  However, it respects user's browser font size settings for accessibility.
 */
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
 
-/* ==========================================================================
-   2. GLOBAL BODY DEFAULTS
-   ========================================================================== */
-
-/*
- * Set up base styles for the entire application.
-*/
+/* --- 3. Body Defaults --- */
 body {
-  margin: 0; /* Remove default browser margin */
-  padding: 0; /* Remove default browser padding */
-
-  /* Set a sensible default font stack */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-
-  /* Set a default font-size of 16px (1.6rem) and line-height */
-  font-size: 1.6rem; /* This is now 16px */
-  line-height: 1.5;
-
-  /* Set default text and background colors for readability */
-  background-color: #f8f9fa; /* A very light gray */
-  color: #212529; /* A dark, off-black for text */
-
-  /* Improve font rendering */
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-sans);
+  font-size: 1.6rem; /* Now equals 16px, which is a standard body text size */
+  line-height: 1.6; /* Increased slightly for better readability */
+  background-color: var(--color-bg-light);
+  color: var(--color-text-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ==========================================================================
-   3. SENSIBLE DEFAULTS FOR COMMON ELEMENTS
-   ========================================================================== */
-
-/* Make images and other media responsive by default */
-img,
-picture,
-video,
-canvas,
-svg {
+/* --- 4. Global Resets --- */
+img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
-
-/* A clean default for links */
-a {
-  color: #007bff; /* A standard blue link color */
-  text-decoration: none; /* Remove underline by default */
-}
-
-a:hover {
-  text-decoration: underline; /* Add underline on hover for clarity */
-}
-
-/* Remove default margins from headings and paragraphs for full control */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+h1, h2, h3, h4, h5, h6, p {
   margin: 0;
+  font-weight: 600; /* A sensible default weight */
 }
-
-/* Remove default list styles */
-ul,
-ol {
+h1, h2, h3 { color: var(--color-text-dark); }
+ul, ol {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- 5. Global Layout Utilities --- */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3.2rem 1.6rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
 }
