@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "db:seed": "node scraping/seed-db.js",
-    "scrape:updates": "node scraping/scraper-runner.js"
+    "db:seed": "node seed.js"
   },
   "keywords": [],
   "author": "",
