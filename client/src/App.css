@@ -1,11 +1,2 @@
-.app-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.main-content {
-  flex-grow: 1;
-}
 
 /* You could keep other very specific app-level layouts here if needed */

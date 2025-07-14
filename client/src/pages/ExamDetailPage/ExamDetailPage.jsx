@@ -1,25 +1,23 @@
-// src/pages/ExamDetailPage/ExamDetailPage.jsx
-
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import styles from "./ExamDetailPage.module.css";
-import SectionCard from "./SectionCard";
-import LinkItemCard from "./LinkItemCard";
-import UpdatesFeed from "./UpdatesFeed";
-import * as Icons from "../../components/Icons";
+import styles from "./ExamDetailPage.module.css"; // Your new detail page styles
 
-// The function starts here
-function ExamDetailPage() {
+const ExamDetailPage = () => {
+  // --- Logic from your old ExamDetailPage ---
   const { shortName } = useParams();
   const [exam, setExam] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Scroll to top when the component mounts or shortName changes
+    window.scrollTo(0, 0);
+
     const fetchExamDetails = async () => {
       try {
         setLoading(true);
-        setError(null); // Reset error on new fetch
+        setError(null);
+        // This is your existing API endpoint
         const res = await fetch(`/api/exams/${shortName}`);
         if (!res.ok) throw new Error(`Error: ${res.status} ${res.statusText}`);
         const data = await res.json();
@@ -31,159 +29,194 @@ function ExamDetailPage() {
       }
     };
     fetchExamDetails();
-  }, [shortName]);
+  }, [shortName]); // Re-fetch if the exam shortName in the URL changes
 
-  // All the logic and early returns for loading/error states go here, inside the function.
+  // --- Loading and Error States ---
   if (loading) {
     return (
-      <div className="container">
-        <h1 className={styles.statusMessage}>Loading details...</h1>
-      </div>
+      <p
+        className="page-title"
+        style={{ textAlign: "center", padding: "5rem" }}
+      >
+        Loading Details...
+      </p>
     );
   }
-
   if (error) {
     return (
-      <div className="container">
-        <h1 className={styles.statusMessage}>{error}</h1>
-      </div>
+      <p
+        className="page-title"
+        style={{ textAlign: "center", padding: "5rem" }}
+      >
+        {error}
+      </p>
     );
   }
-
   if (!exam) {
     return (
-      <div className="container">
-        <h1 className={styles.statusMessage}>Exam not found.</h1>
-      </div>
+      <p
+        className="page-title"
+        style={{ textAlign: "center", padding: "5rem" }}
+      >
+        Exam not found.
+      </p>
     );
   }
 
-  // This is the main return statement for a successful data load.
-  // It is INSIDE the ExamDetailPage function.
+  // --- JSX from your new design, populated with live data ---
   return (
-    <div className="container">
-      <div className={styles.detailPage}>
-        <Link to="/" className={styles.backLink}>
-          ← Back to all exams
-        </Link>
+    <>
+      <header className={styles["page-header"]}>
+        <div className="container">
+          <Link to="/" className={styles["back-link"]}>
+            ← Back to Dashboard
+          </Link>
+        </div>
+      </header>
 
-        <header className={styles.header}>
-          <h1 className={styles.headerTitle}>{exam.name}</h1>
-          <p className={styles.headerDescription}>{exam.description}</p>
-          {exam.officialWebsite && (
+      <main className="container">
+        <article className={styles["exam-content"]}>
+          <h1 className="page-title">{exam.name}</h1>
+          <p className={styles["exam-intro"]}>{exam.description}</p>
+
+          <div className={styles["meta-info"]}>
+            <p className={styles["conducting-body"]}>
+              <strong>Conducted by:</strong> {exam.conductingBody}
+            </p>
             <a
               href={exam.officialWebsite}
+              className="btn btn--secondary"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.headerButton}
             >
-              Official Website{" "}
-              <Icons.ExternalLinkIcon className={styles.headerButtonIcon} />
+              Official Website →
             </a>
-          )}
-        </header>
+          </div>
 
-        <div className={styles.contentGrid}>
-          {/* Latest Updates Section */}
-          {exam.updates && exam.updates.length > 0 && (
-            <SectionCard
-              title="Latest Updates"
-              icon={<Icons.BellAlertIcon className={styles.sectionIcon} />}
-            >
-              <UpdatesFeed updates={exam.updates} />
-            </SectionCard>
-          )}
-
-          {/* Key Information Section */}
-          <SectionCard
-            title="Key Information"
-            icon={<Icons.BookIcon className={styles.sectionIcon} />}
-          >
-            {exam.eligibility?.ageLimit ||
-            exam.eligibility?.educationalQualification ? (
-              <div className={styles.infoGrid}>
-                {exam.eligibility.ageLimit && (
-                  <p>
-                    <strong>Age Limit:</strong> {exam.eligibility.ageLimit}
-                  </p>
-                )}
-                {exam.eligibility.educationalQualification && (
-                  <p>
-                    <strong>Education:</strong>{" "}
-                    {exam.eligibility.educationalQualification}
-                  </p>
-                )}
+          {exam.latestUpdate && (
+            <div className={styles["latest-update-box"]}>
+              <span className={styles.icon}>⚡</span>
+              <div className={styles["update-text"]}>
+                <strong>Latest Update:</strong>
+                <a
+                  href={exam.latestUpdate.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {exam.latestUpdate.title}
+                </a>
               </div>
-            ) : (
-              <p>Eligibility details not available yet.</p>
-            )}
-          </SectionCard>
+            </div>
+          )}
 
-          {/* Syllabus Overview Section */}
-          <SectionCard
-            title="Syllabus Overview"
-            icon={<Icons.BookIcon className={styles.sectionIcon} />}
-          >
-            <p>Detailed syllabus breakdown coming soon!</p>
-          </SectionCard>
+          <section id="timeline">
+            <h2 className="section-title">Important Dates & Timeline</h2>
+            <div className="card">
+              <dl className={styles["definition-list"]}>
+                <dt>Notification Date</dt>
+                <dd>{exam.timeline.notificationDate}</dd>
+                <dt>Application Dates</dt>
+                <dd>{`${exam.timeline.applicationStartDate} to ${exam.timeline.applicationEndDate}`}</dd>
+                <dt>Exam Dates</dt>
+                <dd>{exam.timeline.examDate}</dd>
+                <dt>Final Result</dt>
+                <dd>{exam.timeline.resultDate}</dd>
+              </dl>
+            </div>
+          </section>
 
-          {/* Helpful YouTube Videos Section */}
-          {exam.youtubeVideos && exam.youtubeVideos.length > 0 && (
-            <SectionCard
-              title="Helpful YouTube Videos"
-              icon={
-                <Icons.YouTubeIcon
-                  className={`${styles.sectionIcon} ${styles.youtubeColor}`}
-                />
-              }
-            >
-              <div className={styles.linksGrid}>
-                {exam.youtubeVideos.map((video) => (
-                  <LinkItemCard
-                    key={video._id || video.url}
-                    item={{
-                      title: video.title,
-                      description: video.channelName,
-                      url: video.url,
-                      icon: (
-                        <Icons.YouTubeIcon className={styles.youtubeColor} />
-                      ),
-                    }}
-                  />
+          <section id="eligibility">
+            <h2 className="section-title">Eligibility Criteria</h2>
+            <div className="card">
+              <dl className={styles["definition-list"]}>
+                <dt>Age Limit</dt>
+                <dd>{exam.eligibility.ageLimit}</dd>
+                <dt>Educational Qualification</dt>
+                <dd>{exam.eligibility.educationalQualification}</dd>
+                <dt>Nationality</dt>
+                <dd>{exam.eligibility.nationality}</dd>
+              </dl>
+            </div>
+          </section>
+
+          <section id="pattern">
+            <h2 className="section-title">Exam Pattern</h2>
+            <div className="card">
+              <ol className={styles["stages-list"]}>
+                {exam.examPattern.stages.map((stage, index) => (
+                  <li key={index}>
+                    <strong>{stage.name}</strong>
+                    <p>{stage.description}</p>
+                  </li>
                 ))}
-              </div>
-            </SectionCard>
-          )}
+              </ol>
+              <hr className={styles.separator} />
+              <p>
+                <strong>Marking Scheme:</strong>{" "}
+                {exam.examPattern.markingScheme}
+              </p>
+            </div>
+          </section>
 
-          {/* Recommended Books Section */}
-          {exam.books && exam.books.length > 0 && (
-            <SectionCard
-              title="Recommended Books"
-              icon={
-                <Icons.AmazonIcon
-                  className={`${styles.sectionIcon} ${styles.amazonColor}`}
-                />
-              }
-            >
-              <div className={styles.linksGrid}>
-                {exam.books.map((book) => (
-                  <LinkItemCard
-                    key={book._id || book.title}
-                    item={{
-                      title: book.title,
-                      description: `by ${book.author}`,
-                      url: book.link, // Corrected from amazonLink to link
-                      icon: <Icons.AmazonIcon className={styles.amazonColor} />,
-                    }}
-                  />
-                ))}
-              </div>
-            </SectionCard>
-          )}
-        </div>
-      </div>
-    </div>
+          <section id="syllabus">
+            <h2 className="section-title">Core Syllabus</h2>
+            <div className={styles["syllabus-grid"]}>
+              {exam.syllabus.map((subject, index) => (
+                <div key={index} className={`${styles["syllabus-card"]} card`}>
+                  <h4>{subject.name}</h4>
+                  <ul>
+                    {subject.topics.map((topic, i) => (
+                      <li key={i}>{topic}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="books">
+            <h2 className="section-title">Recommended Books</h2>
+            <div className={styles["books-grid"]}>
+              {exam.books.map((book, index) => (
+                <div key={index} className={styles["book-card"]}>
+                  <h3 className="gradient-text">{book.title}</h3>
+                  <p>by {book.author}</p>
+                  <a
+                    href={book.link || "#"}
+                    className="btn btn--secondary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {book.link ? "Buy on Amazon" : "Link not available"}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="youtube">
+            <h2 className="section-title">Helpful YouTube Channels</h2>
+            <div className={styles["books-grid"]}>
+              {exam.youtubeVideos.map((video, index) => (
+                <div key={index} className={styles["book-card"]}>
+                  <h3 className="gradient-text">{video.channelName}</h3>
+                  <p>{video.title}</p>
+                  <a
+                    href={video.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn--secondary"
+                  >
+                    Visit Channel
+                  </a>
+                </div>
+              ))}
+            </div>
+          </section>
+        </article>
+      </main>
+    </>
   );
-} // The function ends here, after the return statement
+};
 
 export default ExamDetailPage;
