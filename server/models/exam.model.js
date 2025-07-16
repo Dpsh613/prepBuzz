@@ -2,13 +2,13 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-// --- Sub-Schemas (No changes needed here) ---
+// --- Sub-Schemas
 
 const BookSchema = new Schema({
   title: { type: String, required: true },
   author: String,
   source: { type: String, default: "Amazon" },
-  link: { type: String, required: false },
+  link: { type: String },
 });
 
 const VideoSchema = new Schema({
@@ -31,7 +31,6 @@ const ExamPatternStageSchema = new Schema({
 });
 
 const ExamPatternSchema = new Schema({
-  // FIX #2: Removed the restrictive 'enum' to allow for more descriptive modes.
   mode: { type: String },
   stages: [ExamPatternStageSchema],
   negativeMarking: { type: Boolean, default: false },
@@ -44,7 +43,6 @@ const SyllabusItemSchema = new Schema({
 });
 
 // --- The Main Exam Schema ---
-
 const ExamSchema = new Schema(
   {
     name: { type: String, required: true, unique: true },
@@ -56,7 +54,6 @@ const ExamSchema = new Schema(
       ageLimit: String,
       educationalQualification: String,
       nationality: String,
-      // FIX #1: Changed from Number to String to be more flexible.
       numberOfAttempts: String,
     },
     timeline: TimelineSchema,
