@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ExamCard.module.css";
 
@@ -16,14 +15,11 @@ const ExamCard = ({ exam }) => {
           href={exam.officialWebsite}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn--primary" // Global style from index.css
+          className="btn btn--primary"
         >
           Official Website
         </a>
-        <Link
-          to={`/exam/${exam.shortName}`}
-          className="btn btn--secondary" // Global style from index.css
-        >
+        <Link to={`/exam/${exam.shortName}`} className="btn btn--secondary">
           More Details
         </Link>
       </div>

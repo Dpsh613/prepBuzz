@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import styles from "./ExamDetailPage.module.css"; // Your new detail page styles
+import styles from "./ExamDetailPage.module.css";
 
 const ExamDetailPage = () => {
-  // --- Logic from your old ExamDetailPage ---
   const { shortName } = useParams();
   const [exam, setExam] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Scroll to top when the component mounts or shortName changes
     window.scrollTo(0, 0);
 
     const fetchExamDetails = async () => {
@@ -29,7 +27,7 @@ const ExamDetailPage = () => {
       }
     };
     fetchExamDetails();
-  }, [shortName]); // Re-fetch if the exam shortName in the URL changes
+  }, [shortName]);
 
   // --- Loading and Error States ---
   if (loading) {

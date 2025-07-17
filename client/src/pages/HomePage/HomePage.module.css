@@ -1,15 +1,16 @@
-body {
-  /* THEME CHANGE: Applying the dark background */
-  background-color: var(--color-dark-bg);
-  /* The rest of your responsive spacing is perfect */
+.pageWrapper {
   padding-block: clamp(2rem, 4vh, 5rem);
   padding-inline: clamp(1rem, 5vw, 5rem);
   margin-inline: clamp(1rem, 7vw, 6rem);
 }
 
-/* -------------------------------------------------------------------------- */
-/* 3. Typography */
-/* -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .pageWrapper {
+    margin-inline: 0;
+    padding-inline: 2rem;
+  }
+}
+
 .heading-main {
   display: block;
   font-family: var(--font-display);
@@ -35,13 +36,11 @@ body {
   text-align: center;
   font-family: var(--font-text);
   font-size: clamp(2.25rem, 1.5rem + 4vw, 4rem);
-  /* THEME CHANGE: Inverted color for readability on dark background */
   color: var(--color-light-heading);
   font-weight: 100;
   line-height: 1.1;
   margin-bottom: clamp(1.5rem, 1rem + 2vw, 3rem);
-  /* Text shadow still works well on dark! */
-  text-shadow: 0 0.03em 0.125em rgba(0, 0, 0, 0.4);
+  text-shadow: var(--text-shadow);
 }
 
 .heading-3 {
@@ -82,8 +81,7 @@ body {
   text-align: center;
 }
 
-.features,
-.exams {
+.features {
   margin-block: var(--space-xl);
   padding-block: var(--space-md);
 }
@@ -100,36 +98,24 @@ body {
   gap: var(--space-lg);
 }
 
-/* Card styles are shared between feature-box and exam-card */
-.feature-box,
-.exam-card {
+.feature-box {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--space-lg);
-  background: var(--gradient-card);
-  border-radius: 16px;
-  padding: 3rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-box {
   align-items: center;
   text-align: center;
-}
-
-.feature-box:hover,
-.exam-card:hover {
-  transform: scale(0.95);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
-}
-
-.exam-card__actions {
-  display: flex;
-  justify-content: flex-start;
   gap: var(--space-lg);
-  align-items: center;
+  background: var(--gradient-card);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow);
+  padding: 3rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.feature-box:hover {
+  transform: scale(0.97);
+  box-shadow: var(--box-shadow-hover);
 }
 
 @media (min-width: 1000px) and (max-width: 1500px) {
@@ -216,14 +202,6 @@ body {
   .heading-sub {
     font-size: 1.8rem;
     letter-spacing: 0.4rem;
-  }
-  .exam-card {
-    padding: 2.5rem;
-  }
-  .exam-card__actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.5rem;
   }
   .btn {
     text-align: center;

@@ -32,6 +32,11 @@
     rgb(122, 122, 248)
   );
 
+  /* shadow */
+  --text-shadow: 0 0.3em 0.125em rgba(245, 223, 179, 0.233);
+  --box-shadow-hover: 0 3px 1px rgba(220, 217, 217, 0.461);
+  --box-shadow: 0 3px 1px rgba(65, 64, 64, 0.462);
+
   /* Fonts */
   --font-display: "Josefin Slab", serif;
   --font-text: "Comic Neue", cursive;
@@ -87,7 +92,7 @@ body {
 /* --- Buttons --- */
 .btn {
   display: inline-block;
-  font-size: clamp(1.6rem, 2vw, 2rem);
+  font-size: clamp(1.6rem, 2vw, 3rem);
   color: var(--color-light-heading);
   border-radius: var(--border-radius-sm);
   padding: 1rem 2rem;
@@ -124,7 +129,7 @@ body {
   background: var(--gradient-card);
   border-radius: var(--border-radius-md);
   padding: var(--space-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--box-shadow);
 }
 
 /* -------------------------------------------------------------------------- */
