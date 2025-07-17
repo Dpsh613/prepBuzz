@@ -38,85 +38,17 @@
   },
   "syllabus": [
     {
-      "stageName": "AFCAT Online Test",
-      "papers": [
-        {
-          "paperName": "General Awareness",
-          "topics": [
-            { "topic": "History", "subtopics": [] },
-            { "topic": "Geography", "subtopics": [] },
-            { "topic": "Sports", "subtopics": [] },
-            {
-              "topic": "National & International Organisations",
-              "subtopics": []
-            },
-            { "topic": "Art & Culture", "subtopics": [] },
-            { "topic": "Current Affairs", "subtopics": [] },
-            { "topic": "Defence", "subtopics": [] },
-            { "topic": "Basic Science", "subtopics": [] }
-          ]
-        },
-        {
-          "paperName": "Verbal Ability in English",
-          "topics": [
-            { "topic": "Comprehension", "subtopics": [] },
-            { "topic": "Error Detection", "subtopics": [] },
-            { "topic": "Sentence Completion/Fillers", "subtopics": [] },
-            { "topic": "Synonyms & Antonyms", "subtopics": [] },
-            { "topic": "Vocabulary", "subtopics": [] },
-            { "topic": "Idioms and Phrases", "subtopics": [] }
-          ]
-        },
-        {
-          "paperName": "Numerical Ability",
-          "topics": [
-            { "topic": "Decimal Fraction", "subtopics": [] },
-            { "topic": "Time and Work", "subtopics": [] },
-            { "topic": "Average, Profit & Loss", "subtopics": [] },
-            { "topic": "Percentage", "subtopics": [] },
-            { "topic": "Ratio & Proportion", "subtopics": [] },
-            { "topic": "Simple & Compound Interest", "subtopics": [] },
-            {
-              "topic": "Time & Distance and Races",
-              "subtopics": ["Boats & Streams", "Trains"]
-            }
-          ]
-        },
-        {
-          "paperName": "Reasoning and Military Aptitude Test",
-          "topics": [
-            { "topic": "Verbal Skills and Spatial Ability", "subtopics": [] },
-            { "topic": "Odd One Out", "subtopics": [] },
-            { "topic": "Venn Diagrams", "subtopics": [] },
-            { "topic": "Analogy", "subtopics": [] },
-            { "topic": "Pattern Completion", "subtopics": [] },
-            { "topic": "Series Completion", "subtopics": [] }
-          ]
-        }
+      "name": "AFCAT Online Test",
+      "topics": [
+        "General Awareness",
+        "Verbal Ability in English",
+        "Numerical Ability",
+        "Reasoning and Military Aptitude Test"
       ]
     },
     {
-      "stageName": "Engineering Knowledge Test (EKT)",
-      "papers": [
-        {
-          "paperName": "Mechanical, Computer Science, Electrical & Electronics",
-          "topics": [
-            {
-              "topic": "Fundamental Engineering Concepts",
-              "subtopics": [
-                "Thermodynamics",
-                "Engineering Mechanics",
-                "Material Science",
-                "Machine Drawing",
-                "Analog and Digital Electronics",
-                "Computer Networks",
-                "Data Structures",
-                "Switching Theory"
-              ]
-            }
-          ]
-        }
-      ]
+      "name": "Engineering Knowledge Test (EKT)",
+      "topics": ["Mechanical", "Computer Science", "Electrical & Electronics"]
     }
   ],
   "latestUpdate": {
@@ -124,23 +56,6 @@
     "date": "2024-05-30",
     "link": "https://afcat.cdac.in/AFCAT/"
   },
-  "updates": [
-    {
-      "title": "AFCAT 2 2024 Detailed Notification Released",
-      "date": "2024-05-20",
-      "link": "https://afcat.cdac.in/AFCAT/"
-    },
-    {
-      "title": "AFCAT 1 2024 Result Declared",
-      "date": "2024-03-08",
-      "link": "https://afcat.cdac.in/AFCAT/"
-    },
-    {
-      "title": "AFCAT 1 2024 Exam Conducted",
-      "date": "2024-02-18",
-      "link": "https://afcat.cdac.in/AFCAT/"
-    }
-  ],
   "books": [
     {
       "title": "AFCAT (Air Force Common Admission Test) Exam Guide",

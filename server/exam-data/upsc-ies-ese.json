@@ -38,12 +38,12 @@
   },
   "syllabus": [
     {
-      "stage": "Preliminary Exam - Paper I (Common)",
-      "summary": "General Studies and Engineering Aptitude: Current affairs, Engineering Aptitude (Logical reasoning & Analytical ability), Engineering Mathematics, General Principles of Design, Standards and Quality, Energy and Environment, Project Management, Basics of Material Science, ICT, Ethics and Values in the Engineering profession."
+      "name": "Preliminary Exam - Paper I (Common)",
+      "topics": "General Studies and Engineering Aptitude: Current affairs, Engineering Aptitude (Logical reasoning & Analytical ability), Engineering Mathematics, General Principles of Design, Standards and Quality, Energy and Environment, Project Management, Basics of Material Science, ICT, Ethics and Values in the Engineering profession."
     },
     {
-      "stage": "Preliminary & Main Exam - Paper II (Discipline Specific)",
-      "summary": "In-depth syllabus based on the candidate's chosen engineering discipline: Civil Engineering, Mechanical Engineering, Electrical Engineering, or Electronics & Telecommunication Engineering."
+      "name": "Preliminary & Main Exam - Paper II (Discipline Specific)",
+      "topics": "In-depth syllabus based on the candidate's chosen engineering discipline: Civil Engineering, Mechanical Engineering, Electrical Engineering, or Electronics & Telecommunication Engineering."
     }
   ],
   "latestUpdate": {
@@ -51,18 +51,6 @@
     "date": "2024-06-23",
     "link": "https://upsc.gov.in/examinations/exam-calendar"
   },
-  "updates": [
-    {
-      "title": "UPSC ESE 2024 Preliminary Exam Result Declared",
-      "date": "2024-03-28",
-      "link": "https://upsc.gov.in/examinations/results/written-results"
-    },
-    {
-      "title": "UPSC Engineering Services Examination 2024 Notification Released",
-      "date": "2023-09-06",
-      "link": "https://upsc.gov.in/examinations/archive-exam/Engineering%20Services%20%28Preliminary%29%20Examination%2C%202024"
-    }
-  ],
   "books": [
     {
       "title": "ESE General Studies and Engineering Aptitude",
@@ -86,18 +74,20 @@
     }
   ],
   "youtubeVideos": [
-    { "channelName": "MADE EASY", "url": "https://www.youtube.com/@MADE EASY" },
     {
+      "title": "MADE EASY",
+      "channelName": "MADE EASY",
+      "url": "https://www.youtube.com/@MADE EASY"
+    },
+    {
+      "title": "ACE Engineering Academy",
       "channelName": "ACE Engineering Academy",
       "url": "https://www.youtube.com/@ACEAcademy"
     },
     {
+      "title": "Unacademy GATE & ESE - EE, EC, IN",
       "channelName": "Unacademy GATE & ESE - EE, EC, IN",
       "url": "https://www.youtube.com/@UnacademyGate-ee-ec-in"
-    },
-    {
-      "channelName": "Unacademy GATE & ESE - ME, PI, XE",
-      "url": "https://www.youtube.com/@UnacademyGate-me-pi-xe"
     }
   ]
 }

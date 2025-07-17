@@ -43,12 +43,12 @@
   },
   "syllabus": [
     {
-      "stage": "Preliminary Exam",
-      "summary": "Paper I (General Studies): Current events, History of India, Indian and World Geography, Indian Polity, Economic and Social Development, Environmental Ecology, General Science. Paper II (CSAT): Comprehension, Logical reasoning, Basic numeracy, etc. (Qualifying)."
+      "name": "Preliminary Exam",
+      "topics": "Paper I (General Studies): Current events, History of India, Indian and World Geography, Indian Polity, Economic and Social Development, Environmental Ecology, General Science. Paper II (CSAT): Comprehension, Logical reasoning, Basic numeracy, etc. (Qualifying)."
     },
     {
-      "stage": "Main Exam",
-      "summary": "Detailed syllabus covering Essay, Indian Heritage and Culture, History (GS-I); Governance, Constitution, Polity, Social Justice, International Relations (GS-II); Technology, Economic Development, Environment, Security (GS-III); Ethics, Integrity, Aptitude (GS-IV); and one optional subject."
+      "name": "Main Exam",
+      "topics": "Detailed syllabus covering Essay, Indian Heritage and Culture, History (GS-I); Governance, Constitution, Polity, Social Justice, International Relations (GS-II); Technology, Economic Development, Environment, Security (GS-III); Ethics, Integrity, Aptitude (GS-IV); and one optional subject."
     }
   ],
   "latestUpdate": {
@@ -56,18 +56,6 @@
     "date": "2024-06-16",
     "link": "https://upsc.gov.in/"
   },
-  "updates": [
-    {
-      "title": "UPSC CSE 2023 Final Result Declared",
-      "date": "2024-04-16",
-      "link": "https://upsc.gov.in/examinations/results"
-    },
-    {
-      "title": "UPSC CSE 2024 Notification and Application Form Released",
-      "date": "2024-02-14",
-      "link": "https://upsc.gov.in/examinations/active-examinations/civil-services-examination-2024"
-    }
-  ],
   "books": [
     { "title": "Indian Polity", "author": "M. Laxmikanth" },
     {
@@ -84,17 +72,19 @@
   ],
   "youtubeVideos": [
     {
+      "title": "StudyIQ IAS",
       "channelName": "Study IQ IAS",
       "url": "https://www.youtube.com/@studyiqias"
     },
     {
+      "title": "Vision IAS",
       "channelName": "Vision IAS",
       "url": "https://www.youtube.com/@Vision_IAS"
     },
     {
+      "title": "Drishti IAS",
       "channelName": "Drishti IAS",
       "url": "https://www.youtube.com/@DrishtiIASeng"
-    },
-    { "channelName": "Mrunal Patel", "url": "https://www.youtube.com/@mrunal" }
+    }
   ]
 }

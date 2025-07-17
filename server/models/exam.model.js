@@ -54,7 +54,7 @@ const ExamSchema = new Schema(
       ageLimit: String,
       educationalQualification: String,
       nationality: String,
-      numberOfAttempts: String,
+      numberOfAttempts: mongoose.Schema.Types.Mixed,
     },
     timeline: TimelineSchema,
     examPattern: ExamPatternSchema,
@@ -64,13 +64,6 @@ const ExamSchema = new Schema(
       date: String,
       link: String,
     },
-    updates: [
-      {
-        title: String,
-        date: String,
-        link: String,
-      },
-    ],
     books: [BookSchema],
     youtubeVideos: [VideoSchema],
     lastScraped: { type: Date },
