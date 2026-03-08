@@ -1,27 +1,25 @@
 import { Link } from "react-router-dom";
 import styles from "./ExamCard.module.css";
 
-// The 'exam' prop contains data for one exam from the array fetched in HomePage
 const ExamCard = ({ exam }) => {
   return (
-    <div className={styles.examCard}>
-      <div className={styles.examCard__info}>
-        {/* We use the classes from our specific module CSS */}
-        <h3 className={styles.heading3}>{exam.name}</h3>
-        <p className={styles.description}>{exam.description}</p>
+    <div className={styles.card}>
+      <div className={styles.info}>
+        <h3 className={styles.title}>{exam.name}</h3>
+        <p className={styles.desc}>{exam.description}</p>
       </div>
-      <div className={styles.examCard__actions}>
+      <div className={styles.actions}>
+        <Link to={`/exam/${exam.shortName}`} className="btn btn--primary">
+          View Details
+        </Link>
         <a
           href={exam.officialWebsite}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn--primary"
+          className="btn btn--secondary"
         >
-          Official Website
+          Official Site
         </a>
-        <Link to={`/exam/${exam.shortName}`} className="btn btn--secondary">
-          More Details
-        </Link>
       </div>
     </div>
   );

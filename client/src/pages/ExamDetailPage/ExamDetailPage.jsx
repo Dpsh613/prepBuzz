@@ -10,13 +10,13 @@ const ExamDetailPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     const fetchExamDetails = async () => {
       try {
         setLoading(true);
         setError(null);
-        // This is your existing API endpoint
-        const res = await fetch(`/api/exams/${shortName}`);
+        const res = await fetch(
+          `https://prepbuzz-6vh9.onrender.com/api/exams/${shortName}`,
+        );
         if (!res.ok) throw new Error(`Error: ${res.status} ${res.statusText}`);
         const data = await res.json();
         setExam(data);
@@ -29,56 +29,29 @@ const ExamDetailPage = () => {
     fetchExamDetails();
   }, [shortName]);
 
-  // --- Loading and Error States ---
-  if (loading) {
-    return (
-      <p
-        className="page-title"
-        style={{ textAlign: "center", padding: "5rem" }}
-      >
-        Loading Details...
-      </p>
-    );
-  }
-  if (error) {
-    return (
-      <p
-        className="page-title"
-        style={{ textAlign: "center", padding: "5rem" }}
-      >
-        {error}
-      </p>
-    );
-  }
-  if (!exam) {
-    return (
-      <p
-        className="page-title"
-        style={{ textAlign: "center", padding: "5rem" }}
-      >
-        Exam not found.
-      </p>
-    );
-  }
+  if (loading) return <p className={styles.centerMsg}>Loading Details...</p>;
+  if (error) return <p className={styles.centerMsg}>{error}</p>;
+  if (!exam) return <p className={styles.centerMsg}>Exam not found.</p>;
 
-  // --- JSX from your new design, populated with live data ---
   return (
-    <>
-      <header className={styles["page-header"]}>
+    <div className={styles.page}>
+      <header className={styles.header}>
         <div className="container">
-          <Link to="/" className={styles["back-link"]}>
+          <Link to="/" className={styles.backLink}>
             ← Back to Dashboard
           </Link>
         </div>
       </header>
 
       <main className="container">
-        <article className={styles["exam-content"]}>
-          <h1 className="page-title">{exam.name}</h1>
-          <p className={styles["exam-intro"]}>{exam.description}</p>
+        <article className={styles.article}>
+          <div className={styles.titleArea}>
+            <h1 className="page-title">{exam.name}</h1>
+            <p className={styles.intro}>{exam.description}</p>
+          </div>
 
-          <div className={styles["meta-info"]}>
-            <p className={styles["conducting-body"]}>
+          <div className={styles.metaBox}>
+            <p>
               <strong>Conducted by:</strong> {exam.conductingBody}
             </p>
             <a
@@ -87,15 +60,15 @@ const ExamDetailPage = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Official Website →
+              Official Website ↗
             </a>
           </div>
 
           {exam.latestUpdate && (
-            <div className={styles["latest-update-box"]}>
-              <span className={styles.icon}>⚡</span>
-              <div className={styles["update-text"]}>
-                <strong>Latest Update:</strong>
+            <div className={styles.alertBox}>
+              <span className={styles.alertIcon}>⚡</span>
+              <div>
+                <strong>Latest Update: </strong>
                 <a
                   href={exam.latestUpdate.link}
                   target="_blank"
@@ -107,10 +80,10 @@ const ExamDetailPage = () => {
             </div>
           )}
 
-          <section id="timeline">
+          <section className={styles.section}>
             <h2 className="section-title">Important Dates & Timeline</h2>
             <div className="card">
-              <dl className={styles["definition-list"]}>
+              <dl className={styles.defList}>
                 <dt>Notification Date</dt>
                 <dd>{exam.timeline.notificationDate}</dd>
                 <dt>Application Dates</dt>
@@ -123,10 +96,10 @@ const ExamDetailPage = () => {
             </div>
           </section>
 
-          <section id="eligibility">
+          <section className={styles.section}>
             <h2 className="section-title">Eligibility Criteria</h2>
             <div className="card">
-              <dl className={styles["definition-list"]}>
+              <dl className={styles.defList}>
                 <dt>Age Limit</dt>
                 <dd>{exam.eligibility.ageLimit}</dd>
                 <dt>Educational Qualification</dt>
@@ -137,10 +110,10 @@ const ExamDetailPage = () => {
             </div>
           </section>
 
-          <section id="pattern">
+          <section className={styles.section}>
             <h2 className="section-title">Exam Pattern</h2>
             <div className="card">
-              <ol className={styles["stages-list"]}>
+              <ol className={styles.stageList}>
                 {exam.examPattern.stages.map((stage, index) => (
                   <li key={index}>
                     <strong>{stage.name}</strong>
@@ -148,21 +121,20 @@ const ExamDetailPage = () => {
                   </li>
                 ))}
               </ol>
-              <hr className={styles.separator} />
-              <p>
+              <div className={styles.markingScheme}>
                 <strong>Marking Scheme:</strong>{" "}
                 {exam.examPattern.markingScheme}
-              </p>
+              </div>
             </div>
           </section>
 
-          <section id="syllabus">
+          <section className={styles.section}>
             <h2 className="section-title">Core Syllabus</h2>
-            <div className={styles["syllabus-grid"]}>
+            <div className={styles.grid}>
               {exam.syllabus.map((subject, index) => (
-                <div key={index} className={`${styles["syllabus-card"]} card`}>
-                  <h4>{subject.name}</h4>
-                  <ul>
+                <div key={index} className="card">
+                  <h4 className={styles.subjectTitle}>{subject.name}</h4>
+                  <ul className={styles.topicList}>
                     {subject.topics.map((topic, i) => (
                       <li key={i}>{topic}</li>
                     ))}
@@ -172,38 +144,38 @@ const ExamDetailPage = () => {
             </div>
           </section>
 
-          <section id="books">
+          <section className={styles.section}>
             <h2 className="section-title">Recommended Books</h2>
-            <div className={styles["books-grid"]}>
+            <div className={styles.grid}>
               {exam.books.map((book, index) => (
-                <div key={index} className={styles["book-card"]}>
-                  <h3 className="gradient-text">{book.title}</h3>
-                  <p>by {book.author}</p>
+                <div key={index} className="card flex-col">
+                  <h3 className={styles.resourceTitle}>{book.title}</h3>
+                  <p className={styles.resourceAuthor}>by {book.author}</p>
                   <a
                     href={book.link || "#"}
-                    className="btn btn--secondary"
+                    className="btn btn--primary mt-auto"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {book.link ? "Buy on Amazon" : "Link not available"}
+                    {book.link ? "View on Amazon" : "Unavailable"}
                   </a>
                 </div>
               ))}
             </div>
           </section>
 
-          <section id="youtube">
+          <section className={styles.section}>
             <h2 className="section-title">Helpful YouTube Channels</h2>
-            <div className={styles["books-grid"]}>
+            <div className={styles.grid}>
               {exam.youtubeVideos.map((video, index) => (
-                <div key={index} className={styles["book-card"]}>
-                  <h3 className="gradient-text">{video.channelName}</h3>
-                  <p>{video.title}</p>
+                <div key={index} className="card flex-col">
+                  <h3 className={styles.resourceTitle}>{video.channelName}</h3>
+                  <p className={styles.resourceAuthor}>{video.title}</p>
                   <a
                     href={video.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn--secondary"
+                    className="btn btn--secondary mt-auto"
                   >
                     Visit Channel
                   </a>
@@ -213,7 +185,7 @@ const ExamDetailPage = () => {
           </section>
         </article>
       </main>
-    </>
+    </div>
   );
 };
 

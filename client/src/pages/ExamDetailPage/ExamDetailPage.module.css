@@ -1,224 +1,210 @@
-.page-header {
-  padding-block: var(--space-md);
-  margin-bottom: var(--space-lg);
-  background-color: var(--color-dark-card);
+.centerMsg {
+  text-align: center;
+  padding: 5rem;
+  font-size: 1.2rem;
 }
 
-.back-link {
-  color: var(--color-light-text);
+.page {
+  padding-bottom: 5rem;
+}
+
+.header {
+  padding: 1.5rem 0;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 3rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.backLink {
+  color: var(--text-muted);
   text-decoration: none;
-  font-size: 1.6rem;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
-.back-link:hover {
-  text-decoration: underline;
-  color: var(--color-light-heading);
+.backLink:hover {
+  color: var(--text-main);
 }
 
-/* --- Main Content Layout --- */
-.exam-content section {
-  margin-bottom: var(--space-xl);
+.titleArea {
+  margin-bottom: 3rem;
 }
 
-.exam-intro {
-  font-size: 2rem;
-  margin-bottom: var(--space-lg);
-  max-width: 80ch;
+.intro {
+  font-size: 1.2rem;
+  max-width: 800px;
 }
 
-.meta-info {
+.metaBox {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-  padding: var(--space-md);
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: var(--border-radius-sm);
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-md);
+  margin-bottom: 2rem;
 }
-.conducting-body {
+
+.metaBox p {
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
+
+.alertBox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  background-color: rgba(56, 189, 248, 0.1);
+  border-left: 4px solid var(--accent-secondary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-bottom: 4rem;
+}
+
+.alertIcon {
   font-size: 1.5rem;
 }
 
-.latest-update-box {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm);
-  margin-bottom: var(--space-xl);
-  border: 1px solid var(--color-accent-1);
-  border-radius: var(--border-radius-sm);
-  background-color: rgba(100, 50, 50, 0.1);
-}
-
-.latest-update-box .icon {
-  font-size: 2.4rem;
-  color: var(--color-accent-link);
-}
-
-.update-text {
-  font-size: 1.3rem;
-}
-
-.latest-update-box a {
-  color: var(--color-light-heading);
+.alertBox a {
+  color: var(--accent-secondary);
   text-decoration: none;
+  font-weight: 500;
 }
-.latest-update-box a:hover {
+
+.alertBox a:hover {
   text-decoration: underline;
 }
 
-/* --- NEW: Definition Lists (Eligibility/Timeline) --- */
-.definition-list dt {
-  font-family: var(--font-display);
-  font-weight: 200;
-  color: var(--color-light-heading);
-  font-size: 2.5rem;
-  margin-top: var(--space-sm);
-}
-.definition-list dd {
-  margin-left: 0;
-  font-size: 1.7rem;
-  margin-bottom: var(--space-sm);
-  padding-left: var(--space-sm);
-  border-left: 2px solid var(--color-accent-1);
+.section {
+  margin-bottom: 4rem;
 }
 
-/* --- NEW: Exam Pattern Stages --- */
-/* ==========================================================================
-   UPDATED: Exam Pattern Stages & Marking Scheme
-   ========================================================================== */
+/* --- Definition Lists (Eligibility/Timeline) --- */
+.defList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
 
-.stages-list {
+.defList dt {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 1.1rem;
+}
+
+.defList dd {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.defList dd:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* --- Exam Pattern Stages --- */
+.stageList {
   list-style: none;
-  counter-reset: stages-counter;
+  counter-reset: stage;
 }
 
-.stages-list li {
-  counter-increment: stages-counter;
-  margin-bottom: var(--space-lg);
-  /* INCREASED: More padding to accommodate the larger number circle */
-  padding-left: 5rem;
+.stageList li {
   position: relative;
+  padding-left: 3rem;
+  margin-bottom: 2rem;
 }
 
-.stages-list li::before {
-  content: counter(stages-counter);
+.stageList li::before {
+  counter-increment: stage;
+  content: counter(stage);
   position: absolute;
   left: 0;
-  /* Aligned to the top of the text, looks cleaner */
-  top: 0.2rem;
-  /* INCREASED: Larger circle for better visual weight */
-  width: 3.2rem;
-  height: 3.2rem;
-  background-color: var(--color-accent-1);
-  color: var(--color-light-heading);
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--accent-primary);
+  color: #fff;
   border-radius: 50%;
-  display: grid;
-  place-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  /* INCREASED: Larger font size for the number itself */
-  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
-/* This is the heading like "Stage 1: Preliminary Examination" */
-.stages-list li strong {
+.stageList strong {
   display: block;
-  /* INCREASED: Larger font size for the heading */
-  font-size: 2.2rem;
-  color: var(--color-light-heading);
-  /* CHANGED: Set font-weight explicitly as requested */
-  font-weight: 200;
-  line-height: 1.2;
+  font-size: 1.2rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
 }
 
-/* This is the descriptive paragraph below the heading */
-.stages-list li p {
-  /* INCREASED: Larger font size for the description */
-  font-size: 1.8rem;
-  margin-top: 0.5rem; /* Adds a little space below the heading */
+.markingScheme {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border-color);
+  font-size: 1.1rem;
 }
 
-/* This styles the "Marking Scheme:" paragraph for consistency */
-.separator + p {
-  font-size: 1.8rem;
-}
-
-.separator + p strong {
-  font-weight: 400; /* Makes the "Marking Scheme:" text a bit heavier */
-}
-
-/* --- NEW: Separator Line --- */
-.separator {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-block: var(--space-md);
-}
-
-/* ==========================================================================
-   UPDATED: Syllabus Grid
-   ========================================================================== */
-.syllabus-grid {
+/* --- Grids (Syllabus, Books, YouTube) --- */
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-md);
+  gap: 1.5rem;
 }
 
-/* Syllabus Card Heading (e.g., "Preliminary Exam: English Language") */
-.syllabus-card h4 {
-  font-family: var(--font-display);
-  /* INCREASED: Larger font size for better presence */
-  font-size: 2.2rem;
-  /* CHANGED: Lighter font weight for a cleaner look */
-  font-weight: 400;
-  color: var(--color-light-heading);
-  margin-bottom: var(--space-sm);
-  line-height: 1.3;
+.subjectTitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--accent-hover);
 }
 
-/* Syllabus Card List (e.g., "Reading Comprehension") */
-.syllabus-card ul {
-  list-style-position: inside;
-  padding-left: var(--space-xs);
-  /* INCREASED: Consistent, readable font size for list items */
-  font-size: 1.8rem;
-  line-height: 1.5; /* Adds nice spacing between list items */
+.topicList {
+  list-style: inside square;
+  color: var(--text-muted);
 }
 
-/* ==========================================================================
-   UPDATED: Book & YouTube Grid
-   ========================================================================== */
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-lg);
+.topicList li {
+  margin-bottom: 0.5rem;
 }
 
-.book-card {
-  background: var(--gradient-card);
-  border-radius: var(--border-radius-md);
-  padding: var(--space-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+.resourceTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.resourceAuthor {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Utility classes inside the modules */
+:global(.flex-col) {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  text-align: center;
-  gap: var(--space-md);
+}
+:global(.mt-auto) {
+  margin-top: auto;
 }
 
-/* Book/Channel Title (e.g., "A Modern Approach...") */
-.book-card h3 {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  line-height: 1.3;
-  /* CHANGED: Added lighter font weight to remove default bolding */
-  font-weight: 400;
-}
-
-/* Book Author / Channel Description */
-.book-card p {
-  /* INCREASED: Larger font size for the author/description text */
-  font-size: 1.8rem;
+@media (min-width: 768px) {
+  .defList {
+    grid-template-columns: 1fr 2fr;
+    align-items: baseline;
+  }
+  .defList dt {
+    margin-bottom: 0;
+  }
+  .defList dd {
+    border-bottom: none;
+    margin-bottom: 1rem;
+  }
 }

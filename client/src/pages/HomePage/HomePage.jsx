@@ -3,7 +3,6 @@ import styles from "./HomePage.module.css";
 import ExamCard from "../../components/ExamCard/ExamCard";
 
 const HomePage = () => {
-  // --- Logic from your old structure ---
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,75 +10,75 @@ const HomePage = () => {
   useEffect(() => {
     const fetchAllExams = async () => {
       try {
-        // This endpoint should return the array of all 29 exams
-        const res = await fetch("/api/exams");
-        if (!res.ok) {
-          throw new Error(`Failed to fetch: ${res.status}`);
-        }
+        const res = await fetch("https://prepbuzz-6vh9.onrender.com/api/exams");
+        if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
         const data = await res.json();
         setExams(data);
       } catch (err) {
         setError(err.message);
-        console.error("Error fetching exams:", err);
       } finally {
         setLoading(false);
       }
     };
     fetchAllExams();
   }, []);
+
   return (
     <div className={styles.pageWrapper}>
-      <main>
-        <header className={styles.header}>
-          <h1 className={styles.heading}>
-            <span className={styles["heading-main"]}>PrepBuzz</span>
-            <span className={styles["heading-sub"]}>Your Modern Exam Hub</span>
+      <header className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.title}>
+            <span className={styles.titleMain}>PrepBuzz</span>
+            <span className={styles.titleSub}>Your Modern Exam Hub</span>
           </h1>
-        </header>
+          <p className={styles.heroDesc}>
+            Everything you need to crack your next competitive exam. Syllabi,
+            strategies, and top-tier resources in one unified platform.
+          </p>
+        </div>
+      </header>
 
+      <main className="container">
         <section className={styles.features}>
-          <h2 className={styles["section-title"]}>
-            What You’ll Find on PrepBuzz
-          </h2>
-          <div className={styles.features__grid}>
-            <div className={styles["feature-box"]}>
-              <h3 className={styles["heading-3"]}>Exam Info Simplified</h3>
-              <p className={styles.description}>
-                Find complete details for every major exam - Including syllabus,
+          <div className={styles.featuresGrid}>
+            <div className={styles.featureBox}>
+              <h3>Exam Info Simplified</h3>
+              <p>
+                Complete details for every major exam including syllabus,
                 pattern, and eligibility.
               </p>
             </div>
-            <div className={styles["feature-box"]}>
-              <h3 className={styles["heading-3"]}>Smart Book Suggestions</h3>
-              <p className={styles.description}>
-                Get carefully chosen books for each exam. Just the right
-                resources to guide your prep.
+            <div className={styles.featureBox}>
+              <h3>Smart Book Suggestions</h3>
+              <p>
+                Carefully chosen books for each exam to perfectly guide your
+                preparation.
               </p>
             </div>
-            <div className={styles["feature-box"]}>
-              <h3 className={styles["heading-3"]}>Buy Books Instantly</h3>
-              <p className={styles.description}>
-                Easily access recommended books through direct Amazon links.
-                Skip the search.
+            <div className={styles.featureBox}>
+              <h3>Buy Books Instantly</h3>
+              <p>
+                Easily access recommended books through direct links. Skip the
+                search.
               </p>
             </div>
-            <div className={styles["feature-box"]}>
-              <h3 className={styles["heading-3"]}>Helpful YouTube Videos</h3>
-              <p className={styles.description}>
-                Watch curated youtube videos, from lectures to strategy guides,
-                to stay focused.
+            <div className={styles.featureBox}>
+              <h3>Helpful YouTube Videos</h3>
+              <p>
+                Curated video lectures and strategy guides to keep you focused
+                and on track.
               </p>
             </div>
           </div>
         </section>
 
         <section className={styles.exams}>
-          <h2 className={styles["section-title"]}>
-            Quick Look: Govt & Competitive Exams
-          </h2>
-          <div className={styles.exams__list}>
-            {loading && <p className={styles.description}>Loading exams...</p>}
-            {error && <p className={styles.description}>Error: {error}</p>}
+          <h2 className="section-title">Government & Competitive Exams</h2>
+
+          {loading && <p className={styles.statusMsg}>Loading exams...</p>}
+          {error && <p className={styles.statusMsg}>Error: {error}</p>}
+
+          <div className={styles.examsList}>
             {!loading &&
               !error &&
               exams.map((exam) => (

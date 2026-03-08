@@ -1,56 +1,55 @@
-.examCard {
+.card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--space-lg);
-  background: var(--gradient-card);
-  border-radius: var(--space-md);
-  padding: var(--space-lg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  height: 100%;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.examCard:hover {
-  transform: scale(0.97);
-  box-shadow: var(--box-shadow);
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-hover);
 }
 
-.heading3 {
-  margin-bottom: var(--space-sm);
-  padding: var(--space-md);
-  font-size: 2.7rem;
-  font-weight: 700;
-  background: var(--gradient-heading-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: "Josefin Slab", serif;
+.info {
+  margin-bottom: 2rem;
 }
 
-.description {
-  font-size: var(--space-md);
-  line-height: 1.6;
-  font-weight: 100;
-  letter-spacing: 0.8px;
-  font-family: "Comic Neue", cursive;
-  color: rgb(234, 224, 207);
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
 }
 
-.examCard__actions {
+.desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Keeps all cards uniform height by truncating text */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.actions {
   display: flex;
-  justify-content: flex-start;
-  gap: 3rem;
-  align-items: center;
+  gap: 1rem;
   margin-top: auto;
 }
 
-@media (max-width: 600px) {
-  .examCard {
-    padding: 2.5rem;
-  }
+.actions a {
+  flex: 1;
+}
 
-  .examCard__actions {
+@media (max-width: 500px) {
+  .actions {
     flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-md);
   }
 }

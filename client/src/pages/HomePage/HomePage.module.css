@@ -1,215 +1,91 @@
 .pageWrapper {
-  padding-block: clamp(2rem, 4vh, 5rem);
-  padding-inline: clamp(1rem, 5vw, 5rem);
-  margin-inline: clamp(1rem, 7vw, 6rem);
+  width: 100%;
 }
 
-@media (max-width: 600px) {
-  .pageWrapper {
-    margin-inline: 0;
-    padding-inline: 2rem;
-  }
-}
-
-.heading-main {
-  display: block;
-  font-family: var(--font-display);
-  color: var(--color-light-heading);
-  font-size: clamp(1rem, 2rem + 4.5vw, 6rem);
-  font-weight: 400;
-  margin-bottom: var(--space-md);
-  letter-spacing: clamp(1rem, 4vw, 2.9rem);
-  animation: moveInUp 1s ease-out;
-}
-
-.heading-sub {
-  display: block;
-  font-family: var(--font-accent);
-  color: var(--color-light-heading);
-  font-size: clamp(1.25rem, 1rem + 1.5vw, 2rem);
-  letter-spacing: clamp(0.5rem, 2vw, 1.6rem);
-  font-weight: 200;
-  animation: moveInDown 1s ease-out;
-}
-
-.section-title {
+.hero {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.15),
+      transparent 50%
+    ),
+    var(--bg-card);
+  padding: 8rem 2rem 6rem;
   text-align: center;
-  font-family: var(--font-text);
-  font-size: clamp(2.25rem, 1.5rem + 4vw, 4rem);
-  color: var(--color-light-heading);
-  font-weight: 100;
-  line-height: 1.1;
-  margin-bottom: clamp(1.5rem, 1rem + 2vw, 3rem);
-  text-shadow: var(--text-shadow);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 4rem;
 }
 
-.heading-3 {
-  margin-bottom: var(--space-sm);
-  padding: var(--space-md);
-  font-size: 2.7rem;
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.titleMain {
+  display: block;
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
-  background: var(--gradient-heading-text);
+  background: linear-gradient(135deg, #f8fafc 0%, #94a3b8 100%);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: var(--font-display);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
 }
 
-.description {
-  font-size: 2rem;
-  line-height: 1.6;
-  font-weight: 100;
-  letter-spacing: 0.8px;
-  font-family: var(--font-text);
-  color: var(--color-light-text);
+.titleSub {
+  display: block;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--accent-secondary);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
-/* -------------------------------------------------------------------------- */
-/* 4. Layout & Components */
-/* -------------------------------------------------------------------------- */
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-  background-image: var(--gradient-header), url(/hero-background.avif);
-  background-size: cover;
-  background-position: top;
-  clip-path: polygon(0 0, 100% 0, 100% 60vh, 0 100%);
-  position: relative;
-  margin-bottom: var(--space-xl);
-  text-align: center;
+.heroDesc {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .features {
-  margin-block: var(--space-xl);
-  padding-block: var(--space-md);
+  margin-bottom: 6rem;
 }
 
-.features__grid {
+.featuresGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-lg);
+  gap: 2rem;
 }
 
-.exams__list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
+.featureBox {
+  background-color: rgba(30, 41, 59, 0.4);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  text-align: left;
 }
 
-.feature-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+.featureBox h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--accent-hover);
+}
+
+.featureBox p {
+  font-size: 1rem;
+}
+
+.examsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.statusMsg {
   text-align: center;
-  gap: var(--space-lg);
-  background: var(--gradient-card);
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--box-shadow);
+  font-size: 1.2rem;
   padding: 3rem;
-  box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.feature-box:hover {
-  transform: scale(0.97);
-  box-shadow: var(--box-shadow-hover);
-}
-
-@media (min-width: 1000px) and (max-width: 1500px) {
-  .features__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* --- Buttons --- */
-.btn {
-  display: inline-block;
-  font-size: clamp(1.6rem, 2vw, 2.2rem);
-  color: var(--color-light-heading);
-  border-radius: 3px;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  font-family: var(--font-display);
-  font-weight: 200;
-  transition: all 0.2s ease-in-out;
-  border-bottom: 2px solid transparent;
-}
-
-.btn:hover,
-.btn:focus-visible {
-  font-weight: 800;
-  /* THEME CHANGE: Underline color now light to be visible */
-  border-bottom-color: var(--color-light-heading);
-}
-
-.btn--primary:hover,
-.btn--primary:focus-visible {
-  transform: translateY(-5px);
-}
-
-.btn--secondary {
-  color: var(--color-accent-link);
-}
-
-/* -------------------------------------------------------------------------- */
-/* 5. Animations & Responsive (Unchanged) */
-/* -------------------------------------------------------------------------- */
-@keyframes moveInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10rem);
-  }
-  80% {
-    transform: translateY(-1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes moveInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-10rem);
-  }
-  80% {
-    transform: translateY(1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 600px) {
-  body {
-    margin-inline: 0;
-    padding-inline: 2rem;
-  }
-  .header {
-    height: 55vh;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    margin-bottom: 4rem;
-  }
-  .heading-main {
-    font-size: 4.2rem;
-    letter-spacing: 0.5rem;
-  }
-  .heading-sub {
-    font-size: 1.8rem;
-    letter-spacing: 0.4rem;
-  }
-  .btn {
-    text-align: center;
-  }
-  .btn--primary:hover,
-  .btn--primary:focus-visible,
-  .btn--secondary:hover,
-  .btn--secondary:focus-visible {
-    transform: none;
-  }
 }
